@@ -33,6 +33,7 @@ jobs:
       - run: |
           pwd
           echo ${{ steps.files.outputs.all }} >> changed_files.json
+          echo ${{ steps.files.outputs.all }}
           cat changed_files.json
 
         # for changed_file in ${{ steps.files.outputs.all }}; do
