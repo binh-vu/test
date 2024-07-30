@@ -41,6 +41,8 @@ jobs:
 
           ls -lah
 
+          ls -lah ..
+
           echo '--- done ----'
         # for changed_file in ${{ steps.files.outputs.all }}; do
         #     TEMP_FILE=$(mktemp)
