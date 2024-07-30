@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           repository: DARPA-CRITICALMAAS/ta2-minmod-kg
           ref: main
@@ -37,11 +37,11 @@ jobs:
           format: "json"
       - run: |
           pwd
-          echo '${{ steps.files.outputs.all }}' >> changed_files.json
-          echo '${{ steps.files.outputs.all }}'
-          cat changed_files.json
+          # echo '${{ steps.files.outputs.all }}' >> changed_files.json
+          # echo '${{ steps.files.outputs.all }}'
+          # cat changed_files.json
 
-          ls ${{ github.workspace }}
+          ls ${{ GITHUB_WORKSPACE }}
 
         # for changed_file in ${{ steps.files.outputs.all }}; do
         #     TEMP_FILE=$(mktemp)
