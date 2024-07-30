@@ -25,7 +25,10 @@ jobs:
       #   run: |
       #     python -m pip install --upgrade pip
       #     pip install -r validators/requirements.txt  # change this if you have dependencies
-
+      - uses: actions/checkout@v4
+        with:
+          key: ${{ runner.os }}-build
+          path: .
       - id: files
         uses: jitterbit/get-changed-files@v1
         with:
