@@ -10,11 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # - name: Checkout repository
-      #   uses: actions/checkout@v4
-      #   with:
-      #     repository: DARPA-CRITICALMAAS/ta2-minmod-kg
-      #     ref: main
+      - name: Checkout ta2-minmod-kg
+        uses: actions/checkout@v4
+        with:
+          repository: DARPA-CRITICALMAAS/ta2-minmod-kg
+          ref: main
+          path: ta2-minmod-kg
+      - name: Checkout ta2-minmod-data
+        uses: actions/checkout@v4
+        with:
+          path: ta2-minmod-data
       # - name: Set up Python
       #   uses: actions/setup-python@v2
       #   with:
