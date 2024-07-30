@@ -41,7 +41,7 @@ jobs:
           # echo '${{ steps.files.outputs.all }}'
           # cat changed_files.json
 
-          ls ${{ GITHUB_WORKSPACE }}
+          ls $GITHUB_WORKSPACE
 
         # for changed_file in ${{ steps.files.outputs.all }}; do
         #     TEMP_FILE=$(mktemp)
