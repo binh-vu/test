@@ -31,8 +31,9 @@ jobs:
         with:
           format: "json"
       - run: |
-          echo ${{ steps.files.outputs.all }}
-          cat ${{ steps.files.outputs.all }}
+          pwd
+          echo ${{ steps.files.outputs.all }} >> changed_files.json
+          cat changed_files.json
 
         # for changed_file in ${{ steps.files.outputs.all }}; do
         #     TEMP_FILE=$(mktemp)
