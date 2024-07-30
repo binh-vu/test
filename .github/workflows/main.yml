@@ -6,16 +6,20 @@ on:
       - main # change this to your main branch
 
 jobs:
-  run_python_script:
+  validate:
     runs-on: ubuntu-latest
 
     steps:
-      # - name: Checkout repository
-      #   uses: actions/checkout@v2
-      #   with:
-      #     repository: DARPA-CRITICALMAAS/ta2-minmod-kg
-      #     ref: main
-
+      - name: Checkout ta2-minmod-kg
+        uses: actions/checkout@v4
+        with:
+          repository: DARPA-CRITICALMAAS/ta2-minmod-kg
+          ref: main
+          path: ta2-minmod-kg
+      - name: Checkout ta2-minmod-data
+        uses: actions/checkout@v4
+        with:
+          path: ta2-minmod-data
       # - name: Set up Python
       #   uses: actions/setup-python@v2
       #   with:
@@ -26,20 +30,32 @@ jobs:
       #     python -m pip install --upgrade pip
       #     pip install -r validators/requirements.txt  # change this if you have dependencies
 
-      - name: Install jitterbit
+      - id: files
         uses: jitterbit/get-changed-files@v1
         with:
           format: "json"
-
-      - id: files
-        uses: jitterbit/get-changed-files@v1
       - run: |
-          echo ${{ steps.files.outputs.all }}
-          cat ${{ steps.files.outputs.all }}
+          pwd
+          # echo '${{ steps.files.outputs.all }}' >> changed_files.json
+          # echo '${{ steps.files.outputs.all }}'
+          # cat changed_files.json
 
+          echo $GITHUB_WORKSPACE
+
+          ls $GITHUB_WORKSPACE
+
+          ls -lah
+
+          ls -lah ..
+
+          echo '--- done ----'
         # for changed_file in ${{ steps.files.outputs.all }}; do
         #     TEMP_FILE=$(mktemp)
         #     python validators/validate_schema_github_actions.py ${changed_file} ${TEMP_FILE} ${{ secrets.BEARER_TOKEN }} ${{ github.event.pull_request.head.ref }}
         #   done
         # env:
         #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: test
+          path: "."
