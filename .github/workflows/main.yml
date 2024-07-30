@@ -41,6 +41,8 @@ jobs:
           echo '${{ steps.files.outputs.all }}'
           cat changed_files.json
 
+          ls ${{ GITHUB_WORKSPACE }}
+
         # for changed_file in ${{ steps.files.outputs.all }}; do
         #     TEMP_FILE=$(mktemp)
         #     python validators/validate_schema_github_actions.py ${changed_file} ${TEMP_FILE} ${{ secrets.BEARER_TOKEN }} ${{ github.event.pull_request.head.ref }}
