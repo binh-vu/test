@@ -15,7 +15,6 @@ jobs:
         with:
           repository: DARPA-CRITICALMAAS/ta2-minmod-kg
           ref: main
-
       # - name: Set up Python
       #   uses: actions/setup-python@v2
       #   with:
@@ -35,6 +34,8 @@ jobs:
           # echo '${{ steps.files.outputs.all }}' >> changed_files.json
           # echo '${{ steps.files.outputs.all }}'
           # cat changed_files.json
+
+          echo $GITHUB_WORKSPACE
 
           ls $GITHUB_WORKSPACE
 
