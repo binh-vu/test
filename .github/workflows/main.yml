@@ -48,8 +48,6 @@ jobs:
 
           ls -lah ..
 
-          cat .github/workflows/main.yml
-
           echo '--- done ----'
         # for changed_file in ${{ steps.files.outputs.all }}; do
         #     TEMP_FILE=$(mktemp)
